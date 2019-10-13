@@ -32,15 +32,15 @@ kubelet:
 kubeControllerManager:
     enabled: true
 endpoints:
-    - 192.168.79.41     ## Change to the Master IP(s) recorded from "bosh vms"
+    - 192.168.79.41     ## Change to the Master IP(s)
 kubeScheduler:
     enabled: true
 endpoints:
-    - 192.168.79.41     ## Change to the Master IP(s) recorded from "bosh vms"
+    - 192.168.79.41     ## Change to the Master IP(s)
 kubeEtcd:
     enabled: true
     endpoints:
-    - 192.168.79.41     ## Change to the Master IP(s) recorded from "bosh vms"
+    - 192.168.79.41     ## Change to the Master IP(s)
     serviceMonitor:
          insecureSkipVerify: true
          scheme: https
