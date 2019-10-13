@@ -1,0 +1,42 @@
+grafana:
+  adminPassword: "VMware1!"
+  ingress:
+    enabled: true
+    hosts:
+      - grafana.rtbsystems.local  ## Change to your ingress DNS for the cluster
+    path: "/"
+prometheus:
+  ingress:
+    enabled: true
+    hosts: 
+      - prometheus.rtbsystems.local  ## Change to your ingress DNS for the cluster
+    paths:
+      - "/"
+  prometheusSpec:
+    secrets:
+      - etcd-client
+alertmanager:
+  ingress:
+    enabled: true
+    hosts: 
+      - alertmanager.rtbsystems.local  ## Change to your ingress DNS for the cluster
+    paths:
+      - "/"
+kubelet:
+  serviceMonitor:
+    https: true
+kubeControllerManager:
+  endpoints:
+    - 192.168.79.41     ## Change to the Master IP(s) recorded from "bosh vms"
+kubeScheduler:
+  endpoints:
+    - 192.168.79.41     ## Change to the Master IP(s) recorded from "bosh vms"
+kubeEtcd:
+  endpoints:
+    - 192.168.79.41     ## Change to the Master IP(s) recorded from "bosh vms"
+  serviceMonitor:
+    insecureSkipVerify: true
+    scheme: https
+    caFile: "/etc/prometheus/secrets/etcd-client/etcd-ca.crt"
+    certFile: "/etc/prometheus/secrets/etcd-client/etcdctl.crt"
+    keyFile: "/etc/prometheus/secrets/etcd-client/etcdctl.key"
