@@ -4,7 +4,7 @@ grafana:
     hosts:
       - grafana.app.rtbsystems.com  ## Change to your ingress DNS for the cluster
     path: "/*"
-  adminPassword: "VMware1!"
+  adminPassword: "password"
 prometheus:
   ingress:
     enabled: true
@@ -27,13 +27,13 @@ kubelet:
     https: true
 kubeControllerManager:
   endpoints:
-    - 172.25.0.2     ## Change to the Master IP(s) recorded from "bosh vms"
+    - 172.0.0.1     ## Change to the Master IP(s) recorded from "bosh vms"
 kubeScheduler:
   endpoints:
-    - 172.25.0.2     ## Change to the Master IP(s) recorded from "bosh vms"
+    - 172.0.0.1     ## Change to the Master IP(s) recorded from "bosh vms"
 kubeEtcd:
   endpoints:
-    - 172.25.0.2    ## Change to the Master IP(s) recorded from "bosh vms"
+    - 172.0.0.1     ## Change to the Master IP(s) recorded from "bosh vms"
   serviceMonitor:
     insecureSkipVerify: true
     scheme: https
